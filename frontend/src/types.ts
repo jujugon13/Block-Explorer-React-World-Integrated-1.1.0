@@ -1,0 +1,11 @@
+export type Page<T> = { content: T[]; page: number; size: number; totalElements: number; totalPages: number; first: boolean; last: boolean };
+export type User = { userId: number; email: string; name: string; departmentId: number | null; departmentName: string | null; roles: string[]; status: string; createdAt: string; lastLoginAt: string | null };
+export type Department = { departmentId: number; name: string; status: string };
+export type Role = { code: string; name: string };
+export type Version = { documentVersionId: number; versionNo: number; status: string; originalFilename: string; contentType: string; fileSize: number; indexedAt: string | null; createdAt: string };
+export type Document = { documentId: number; title: string; description: string | null; documentType: string; sourceType: string; status: string; visibility: string; ownerUserId: number; ownerName: string; currentVersion: Version | null; contentAvailable: boolean; createdAt: string; updatedAt: string };
+export type DocumentStatus = { documentId: number; documentStatus: string; currentVersion: { versionNo: number; status: string } | null; processingVersion: { versionNo: number; status: string; jobStatus: string } | null };
+export type EffectivePermission = { canRead: boolean; canWrite: boolean; canAdmin: boolean; sources: string[] };
+export type DirectPermission = { permissionId: number; permissionKind: string; targetType: string; userId: number | null; departmentId: number | null; roleCode: string | null; expiresAt: string | null };
+export type Collection = { collectionId: number; name: string; ownerUserId: number; parentId: number | null; visibility: string; status: string };
+export type Dashboard = { documents: { total: number; searchable: number; pendingIndex: number }; jobs: { pending: number; processing: number; failed: number; avgProcessMs: number | null }; workers: { activeCount: number; totalCount: number }; search: { recent24hCount: number } };
